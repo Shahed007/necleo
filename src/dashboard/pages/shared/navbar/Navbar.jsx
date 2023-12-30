@@ -1,10 +1,25 @@
 import avatar from "../../../../assets/image/avatar.png";
 import { TiArrowSortedDown } from "react-icons/ti";
 import Button from "../../../../components/button/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const [avatarToggle, setAvatarToggle] = useState(false);
+
+  const handleBodyClick = (event) => {
+    if (avatarToggle && !event.target.closest(".avatar")) {
+      setAvatarToggle(false);
+    }
+  };
+
+  useEffect(() => {
+    document.body.addEventListener("click", handleBodyClick);
+
+    return () => {
+      document.body.removeEventListener("click", handleBodyClick);
+    };
+  }, [avatarToggle]);
+
   return (
     <nav className="h-16 max-w-screen-xl xl:px-0 px-4 py-2 mx-auto flex justify-between items-center">
       <button>
@@ -34,22 +49,24 @@ const Navbar = () => {
         </div>
         <div
           onClick={() => setAvatarToggle(!avatarToggle)}
-          className={`flex items-center gap-3 border   px-2 rounded-full duration-150 ease-in-out hover:border-gray-300 hover:shadow-sm  cursor-pointer ${
-            avatarToggle ? "border-gray-300 shadow-sm " : "border-transparent"
+          className={`flex items-center gap-3 border avatar   px-2 rounded-full duration-150 ease-in-out hover:border-gray-100 hover:shadow-sm  cursor-pointer ${
+            avatarToggle ? "border-gray-100 shadow-sm " : "border-transparent"
           }`}
         >
           <img src={avatar} alt="avatar" />
           <TiArrowSortedDown className="text-[12] text-black" />
         </div>
         <div
-          className={`absolute bg-white shadow-sm border-l border-t border-gray-300 border-b h-40 p-4 w-60 top-16  duration-300 ease-in-out flex flex-col gap-3 ${
+          className={`absolute bg-white shadow-sm border-l border-t border-gray-100 border-b h-40 p-4 w-60 top-16  duration-300 ease-in-out flex flex-col gap-6 ${
             avatarToggle ? "right-0" : "-right-full"
           }`}
         >
-          <h3 className="text-center text-xl font-semibold border-b border-b-gray-300">
-            MD Shahed
-          </h3>
-          <h4 className="text-lg text-black">Web Developer</h4>
+          <div>
+            <h3 className="text-center text-xl font-semibold border-b border-b-gray-100">
+              MD Shahed
+            </h3>
+            <h4 className="text-base text-center text-black">Web Developer</h4>
+          </div>
           <Button>Logout</Button>
         </div>
       </div>
