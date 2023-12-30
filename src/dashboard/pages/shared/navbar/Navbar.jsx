@@ -2,8 +2,9 @@ import avatar from "../../../../assets/image/avatar.png";
 import { TiArrowSortedDown } from "react-icons/ti";
 import Button from "../../../../components/button/Button";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
-const Navbar = () => {
+const Navbar = ({ handleCollapse }) => {
   const [avatarToggle, setAvatarToggle] = useState(false);
 
   const handleBodyClick = (event) => {
@@ -22,7 +23,7 @@ const Navbar = () => {
 
   return (
     <nav className="h-16 max-w-screen-xl xl:px-0 px-4 py-2 mx-auto flex justify-between items-center">
-      <button>
+      <button onClick={handleCollapse} className="active:scale-95">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -57,8 +58,8 @@ const Navbar = () => {
           <TiArrowSortedDown className="text-[12] text-black" />
         </div>
         <div
-          className={`absolute bg-white shadow-sm border-l border-t border-gray-100 border-b h-40 p-4 w-60 top-16  duration-300 ease-in-out flex flex-col gap-6 ${
-            avatarToggle ? "right-0" : "-right-full"
+          className={`absolute bg-white shadow-sm border-l border-t border-gray-100 border-b h-40 p-4 w-60 top-16 right-0 duration-300 ease-in-out flex flex-col gap-6 ${
+            avatarToggle ? "opacity-100" : "opacity-0 -right-full"
           }`}
         >
           <div>
@@ -72,6 +73,10 @@ const Navbar = () => {
       </div>
     </nav>
   );
+};
+
+Navbar.propTypes = {
+  handleCollapse: PropTypes.func.isRequired,
 };
 
 export default Navbar;
