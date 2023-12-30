@@ -4,9 +4,11 @@ import Navbar from "./pages/shared/navbar/Navbar";
 const DashboardLayout = () => {
   return (
     <>
-      <Navbar></Navbar>
+      <header className="bg-white border-b border-b-gray-300">
+        <Navbar></Navbar>
+      </header>
       <main>
-        <aside></aside>
+        <aside>SideNav</aside>
         <Outlet></Outlet>
       </main>
     </>
