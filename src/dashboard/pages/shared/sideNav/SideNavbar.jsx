@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../../../assets/logo/logo.png";
 import PropTypes from "prop-types";
 import NavItem from "./NavItem/NavItem";
@@ -6,7 +6,7 @@ import NavItem from "./NavItem/NavItem";
 const SideNavbar = ({ handleCollapse, collapse }) => {
   return (
     <div
-      className={`absolute top-0 w-60  xl:w-1/5 bg-white border-r border-gray-100 shadow-sm lg:h-screen overflow-y-auto  px-5 py-4 ${
+      className={`absolute top-0 w-60  xl:w-1/5 bg-white border-r border-gray-100 shadow-sm lg:h-screen h-auto overflow-y-auto  px-5 py-4 ${
         collapse
           ? "left-0 duration-200 ease-in-out transition-all"
           : "-left-full duration-200 ease-in-out transition-all"

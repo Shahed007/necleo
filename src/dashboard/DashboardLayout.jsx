@@ -15,13 +15,13 @@ const DashboardLayout = () => {
         <Navbar handleCollapse={handleCollapse}></Navbar>
         <SideNavbar handleCollapse={handleCollapse} collapse={collapse} />
       </header>
-      <main className="flex flex-col lg:flex-row h-full overflow-x-hidden">
+      <main className="flex flex-col lg:flex-row md:h-[89vh] overflow-y-auto overflow-x-hidden">
         <aside
           className={`lg:block hidden ${
             collapse ? "w-1/5" : "w-0"
           } duration-200 ease-in-out transition-all overflow-y-auto`}
         ></aside>
-        <section className="bg-[#F8F8F8] flex-1 h-full overflow-y-auto">
+        <section className="bg-[#F8F8F8] flex-1 h-auto overflow-y-auto">
           <Outlet />
         </section>
       </main>
