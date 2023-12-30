@@ -3,12 +3,18 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "./dashboard/DashboardLayout";
+import MyProjects from "./dashboard/pages/myProjects/MyProjects";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <DashboardLayout></DashboardLayout>,
-    children: [],
+    children: [
+      {
+        index: true,
+        element: <MyProjects></MyProjects>,
+      },
+    ],
   },
 ]);
 
